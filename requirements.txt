@@ -2,7 +2,7 @@ duckdb==0.9.2
 fastapi==0.109.0
 fastparquet==2024.2.0
 folium==0.15.1
-geopandas==0.14.2
+geopandas==0.14.4
 h3==3.7.6
 imagecodecs==2024.1.1
 numpy==1.26.3
@@ -19,4 +19,4 @@ xarray==2023.1.0
 # Fiona requires system-level GDAL installation. Do not install via pip.
 # Please install GDAL and its development libraries (e.g., libgdal-dev on Debian/Ubuntu)
 # Refer to Fiona's documentation for detailed installation instructions: https://fiona.readthedocs.io/en/latest/manual.html#installing-fiona
-fiona>=1.8.21,<1.11
+fiona==1.8.22
