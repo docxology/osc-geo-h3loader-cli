@@ -36,6 +36,9 @@ For more information see the [h3 website](https://h3geo.org/), or
 
 ## Setting up your Environment
 
+**Important Note for Fiona and GDAL:**
+Fiona, a dependency for geospatial operations, requires a system-level installation of GDAL and its development libraries (e.g., `libgdal-dev` on Debian/Ubuntu, `gdal-devel` on RHEL/Fedora, or `gdal` via Homebrew on macOS). Please ensure GDAL is installed on your system before attempting to install Python dependencies. Refer to Fiona's official documentation for detailed installation instructions: [https://fiona.readthedocs.io/en/latest/manual.html#installing-fiona](https://fiona.readthedocs.io/en/latest/manual.html#installing-fiona)
+
 Some environment variables are used by various code and scripts.
 Set up your environment as follows (note that "source" is used)
 
