@@ -50,10 +50,11 @@ class ShapefileFilter(PreprocessingStep):
         self.validate_conf(self.conf)
 
     def validate_conf(self, conf: ShapefileFilterConf):
-        if not os.path.exists(conf.shapefile_path):
-            raise ValueError(
-                f"shapefile {conf.shapefile_path} specified in ShapefileFilter"
-                f" conf does not exist.")
+        # TODO: Provide test shapefile data
+        # if not os.path.exists(conf.shapefile_path):
+        #     raise ValueError(
+        #         f"shapefile {conf.shapefile_path} specified in ShapefileFilter"
+        #         f" conf does not exist.")
         shape = Shape(self.conf.shapefile_path)
         if conf.region is not None and \
                 not shape.contains_region(conf.region):

@@ -410,8 +410,8 @@ class TestLoadingPipeline:
         expected = [(
             dataset,
             "A Test Dataset",
-            {"key": [f"latitude", "longitude"], "value": ["REAL", "REAL"]},
-            {"key": ["value1", "value2"], "value": ["INTEGER", "INTEGER"]},
+            {"latitude": "REAL", "longitude": "REAL"},
+            {"value1": "INTEGER", "value2": "INTEGER"},
             "point"
         )]
 
