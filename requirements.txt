@@ -19,4 +19,4 @@ xarray==2023.1.0
 # Fiona requires system-level GDAL installation. Do not install via pip.
 # Please install GDAL and its development libraries (e.g., libgdal-dev on Debian/Ubuntu)
 # Refer to Fiona's documentation for detailed installation instructions: https://fiona.readthedocs.io/en/latest/manual.html#installing-fiona
-fiona==1.8.19
+fiona>=1.8.21,<1.11
