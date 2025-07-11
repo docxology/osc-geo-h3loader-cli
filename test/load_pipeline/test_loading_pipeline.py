@@ -410,9 +410,8 @@ class TestLoadingPipeline:
         expected = [(
             dataset,
             "A Test Dataset",
-            {"latitude": "REAL", "longitude": "REAL"},
-            {"value1": "INTEGER", "value2": "INTEGER"},
+            {"key": ["latitude", "longitude"], "value": ["REAL", "REAL"]},
+            {"key": ["value1", "value2"], "value": ["INTEGER", "INTEGER"]},
             "point"
         )]
-
         assert out == expected
