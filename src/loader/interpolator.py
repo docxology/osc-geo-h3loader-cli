@@ -377,7 +377,7 @@ class Interpolator:
             base_cells = h3.get_res0_cells()
         except AttributeError:
             # Fallback for older H3 versions
-            base_cells = h3.get_res0_indexes()
+        base_cells = h3.get_res0_indexes()
         all_cells = set()
         for base_cell in base_cells:
             # Use the correct H3 API method for version 4.x
@@ -385,6 +385,6 @@ class Interpolator:
                 children = h3.cell_to_children(base_cell, resolution)
             except AttributeError:
                 # Fallback for older H3 versions
-                children = h3.h3_to_children(base_cell, resolution)
+            children = h3.h3_to_children(base_cell, resolution)
             all_cells.update(children)
         return list(all_cells)
