@@ -191,8 +191,8 @@ class HexGridVisualizer(AbstractVisualizer):
             # Convert H3 cell to a polygon
             # note that must use geo_json=False to ensure lat/long are
             # in the right order!
-            boundary = h3.h3_to_geo_boundary(h3_cell, geo_json=False)
-            # logger.info(f"h3_cell:{h3_cell} h3.h3_to_geo(cell):{h3.h3_to_geo(h3_cell)} boundary:{boundary}")
+            boundary = h3.cell_to_latlng_boundary(h3_cell, geo_json=False)
+            # logger.info(f"h3_cell:{h3_cell} h3.cell_to_latlng(cell):{h3.cell_to_latlng(h3_cell)} boundary:{boundary}")
 
             # Create a folium Polygon and add to the map
             polygon = folium.Polygon(
@@ -203,7 +203,7 @@ class HexGridVisualizer(AbstractVisualizer):
                 # fill_opacity=0.2
             ).add_to(cell_map)
 
-            center = h3.h3_to_geo(h3_cell)
+            center = h3.cell_to_latlng(h3_cell)
             tooltip_text = f'H3 Index: {h3_cell}\nLatitude: {center[0]:.6f}, Longitude: {center[1]:.6f}'
             folium.Tooltip(tooltip_text).add_to(polygon)
 
@@ -366,7 +366,7 @@ class HexGridVisualizer(AbstractVisualizer):
             max_val: float,
             geo_map: folium.Map
     ):
-        boundary = h3.h3_to_geo_boundary(cell, geo_json=False)
+        boundary = h3.cell_to_latlng_boundary(cell, geo_json=False)
         new_rgb = self._adjust_rgb(max_val, min_val, cell_value)
 
         hex_color = self.rgb_to_hex(new_rgb)
@@ -385,7 +385,7 @@ class HexGridVisualizer(AbstractVisualizer):
             fill_opacity=opacity,
         ).add_to(geo_map)
 
-        center = h3.h3_to_geo(cell)
+        center = h3.cell_to_latlng(cell)
         tooltip_text = f'value: {cell_value}\n' \
                        f'H3 Index: {cell}\n' \
                        f'Latitude: {center[0]:.6f}, ' \
@@ -432,7 +432,7 @@ class HexGridVisualizer(AbstractVisualizer):
         boundary_poly = Polygon(coords)
 
         geojson = shape(boundary_poly).__geo_interface__
-        overlap_cells = h3.polyfill(geojson, res)
+        overlap_cells = h3.polygon_to_cells(geojson, res)
         return set(overlap_cells)
 
     def _adjust_rgb(

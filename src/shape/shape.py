@@ -507,14 +507,14 @@ class Shape:
             # Process Polygon geometries
             if isinstance(geom, Polygon):
                 geojson = shape(geom).__geo_interface__
-                overlap_cells = h3.polyfill(geojson, resolution)
+                overlap_cells = h3.polygon_to_cells(geojson, resolution)
                 cells.update(overlap_cells)
 
             # Break down MultiPolygon geometries into Polygons
             elif isinstance(geom, MultiPolygon):
                 for poly in geom.geoms:
                     geojson = shape(poly).__geo_interface__
-                    overlap_cells = h3.polyfill(geojson, resolution)
+                    overlap_cells = h3.polygon_to_cells(geojson, resolution)
                     cells.update(overlap_cells)
 
         return cells

@@ -92,12 +92,12 @@ class CellAggregationStep:
     def _add_cell_centroid_lat_long(self, in_df: DataFrame) -> DataFrame:
         def cell_to_lat(row):
             cell = row['h3_cell']
-            lat, long = h3.h3_to_geo(cell)
+            lat, long = h3.cell_to_latlng(cell)
             return lat
 
         def cell_to_long(row):
             cell = row['h3_cell']
-            lat, long = h3.h3_to_geo(cell)
+            lat, long = h3.cell_to_latlng(cell)
 
             return long
         in_df[LATITUDE_COL] = in_df.apply(cell_to_lat, axis='columns')
@@ -108,7 +108,7 @@ class CellAggregationStep:
         def to_cell(row):
             lat = row['latitude']
             long = row['longitude']
-            return h3.geo_to_h3(lat, long, self.res)
+            return h3.latlng_to_cell(lat, long, self.res)
 
         in_df[CELL_COL] = in_df.apply(to_cell, axis='columns')
 

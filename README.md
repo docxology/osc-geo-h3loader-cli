@@ -14,24 +14,24 @@
 > The fork has been updated to use H3 library version 4.x, which introduces significant API changes from the original v3.x implementation. Key method name changes include:
 > 
 > **Core Indexing Functions:**
-> - `h3.geo_to_h3(lat, lng, res)` → `h3.latlng_to_cell(lat, lng, res)`
-> - `h3.h3_to_geo(h3_index)` → `h3.cell_to_latlng(h3_index)`
-> - `h3.h3_to_geo_boundary(h3_index)` → `h3.cell_to_boundary(h3_index)`
+> - `h3.latlng_to_cell(lat, lng, res)` → `h3.latlng_to_cell(lat, lng, res)`
+> - `h3.cell_to_latlng(h3_index)` → `h3.cell_to_latlng(h3_index)`
+> - `h3.cell_to_latlng_boundary(h3_index)` → `h3.cell_to_boundary(h3_index)`
 > 
 > **Hierarchical Operations:**
-> - `h3.h3_to_parent(h3_index, res)` → `h3.cell_to_parent(h3_index, res)`
-> - `h3.h3_to_children(h3_index, res)` → `h3.cell_to_children(h3_index, res)`
+> - `h3.cell_to_parent(h3_index, res)` → `h3.cell_to_parent(h3_index, res)`
+> - `h3.cell_to_children(h3_index, res)` → `h3.cell_to_children(h3_index, res)`
 > 
 > **Region Operations:**
-> - `h3.polyfill(geojson, res)` → `h3.polygon_to_cells(geojson, res)`
+> - `h3.polygon_to_cells(geojson, res)` → `h3.polygon_to_cells(geojson, res)`
 > 
 > **Traversal Functions:**
-> - `h3.k_ring(h3_index, k)` → `h3.k_ring(h3_index, k)` (unchanged)
-> - `h3.hex_ring(h3_index, k)` → `h3.hex_ring(h3_index, k)` (unchanged)
+> - `h3.grid_disk(h3_index, k)` → `h3.grid_disk(h3_index, k)` (unchanged)
+> - `h3.grid_ring_unsafe(h3_index, k)` → `h3.grid_ring_unsafe(h3_index, k)` (unchanged)
 > 
 > **Inspection Functions:**
-> - `h3.h3_is_valid(h3_index)` → `h3.is_valid_cell(h3_index)`
-> - `h3.h3_get_resolution(h3_index)` → `h3.get_resolution(h3_index)`
+> - `h3.is_valid_cell(h3_index)` → `h3.is_valid_cell(h3_index)`
+> - `h3.get_resolution(h3_index)` → `h3.get_resolution(h3_index)`
 > 
 > ### Additional Improvements
 > - Enhanced error handling and validation

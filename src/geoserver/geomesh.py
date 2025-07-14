@@ -253,7 +253,7 @@ class Geomesh:
         boundary_poly = Polygon(coords)
 
         geojson = shape(boundary_poly).__geo_interface__
-        overlap_cells = h3.polyfill(geojson, res)
+        overlap_cells = h3.polygon_to_cells(geojson, res)
         return set(overlap_cells)
 
 

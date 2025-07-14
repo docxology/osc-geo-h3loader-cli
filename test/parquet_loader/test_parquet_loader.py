@@ -78,7 +78,7 @@ class TestParquetLoader:
 
         connection = duckdb.connect(database_path)
 
-        cell = h3.geo_to_h3(51, -102.25, 2)
+        cell = h3.latlng_to_cell(51, -102.25, 2)
 
         interp = connection.execute(
             f"select value2 from {ds_name}_2 where h3_cell = '{cell}'"
@@ -112,7 +112,7 @@ class TestParquetLoader:
             long = result[1]
 
             for res in range(0, 3):
-                expected_cell = h3.geo_to_h3(lat, long, res)
+                expected_cell = h3.latlng_to_cell(lat, long, res)
                 actual_cell = result[2 + res]
                 assert actual_cell == expected_cell,\
                     f"actual cell {actual_cell} did not match expected cell" \

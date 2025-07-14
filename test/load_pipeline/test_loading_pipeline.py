@@ -203,8 +203,8 @@ class TestLoadingPipeline:
         ))
 
         # the same as the raw data in the initial file
-        cell1_lat, cell1_long = h3.h3_to_geo('8110bffffffffff')
-        cell2_lat, cell2_long = h3.h3_to_geo('81defffffffffff')
+        cell1_lat, cell1_long = h3.cell_to_latlng('8110bffffffffff')
+        cell2_lat, cell2_long = h3.cell_to_latlng('81defffffffffff')
         expected = {
             ('8110bffffffffff', 0, 10, 0, 100,
              cell1_lat, cell1_long),
@@ -307,8 +307,8 @@ class TestLoadingPipeline:
 
         out = read_temp_db(dataset)
 
-        cell1_lat, cell1_long = h3.h3_to_geo('8110bffffffffff')
-        cell2_lat, cell2_long = h3.h3_to_geo('81defffffffffff')
+        cell1_lat, cell1_long = h3.cell_to_latlng('8110bffffffffff')
+        cell2_lat, cell2_long = h3.cell_to_latlng('81defffffffffff')
 
         def f(i: int):
             return (i + 1) * 2
@@ -364,8 +364,8 @@ class TestLoadingPipeline:
         ))
 
         # the same as the raw data in the initial file
-        cell1_lat, cell1_long = h3.h3_to_geo('8110bffffffffff')
-        cell2_lat, cell2_long = h3.h3_to_geo('81defffffffffff')
+        cell1_lat, cell1_long = h3.cell_to_latlng('8110bffffffffff')
+        cell2_lat, cell2_long = h3.cell_to_latlng('81defffffffffff')
 
         # the same as the raw data in the initial file
         expected = {

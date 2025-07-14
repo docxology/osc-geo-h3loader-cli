@@ -117,7 +117,7 @@ class IndexLoaderTemp:
         def to_cell(row):
             lat = row['latitude']
             long = row['longitude']
-            return h3.geo_to_h3(lat, long, res)
+            return h3.latlng_to_cell(lat, long, res)
 
         gdf_fix_col[cell_col] = gdf_fix_col.apply(to_cell, axis='columns')
         # gdf_fix_col.drop(columns=['latitude', 'longitude'])

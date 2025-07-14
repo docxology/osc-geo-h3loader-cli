@@ -310,7 +310,7 @@ class Interpolator:
             power: int) -> List[Dict[str, Any]]:
         items: List[Dict[str, Any]] = []
         for cell in cells:
-            cell_lat, cell_long = h3.h3_to_geo(cell)
+            cell_lat, cell_long = h3.cell_to_latlng(cell)
 
             interpolated_values = []
             # Check progressively more neighbors until valid temp returned
@@ -385,6 +385,6 @@ class Interpolator:
                 children = h3.cell_to_children(base_cell, resolution)
             except AttributeError:
                 # Fallback for older H3 versions
-            children = h3.h3_to_children(base_cell, resolution)
+            children = h3.cell_to_children(base_cell, resolution)
             all_cells.update(children)
         return list(all_cells)

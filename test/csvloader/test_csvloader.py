@@ -76,7 +76,7 @@ class TestCSVLoader(unittest.TestCase):
 
         connection = duckdb.connect(database_path)
 
-        cell = h3.geo_to_h3(50.25, 50.25, 2)
+        cell = h3.latlng_to_cell(50.25, 50.25, 2)
 
         interp = connection.execute(
             f"select mydata from {ds_name}_2 where h3_cell = '{cell}'"
@@ -130,7 +130,7 @@ class TestCSVLoader(unittest.TestCase):
             long = result[1]
 
             for res in range(0, 3):
-                expected_cell = h3.geo_to_h3(lat, long, res)
+                expected_cell = h3.latlng_to_cell(lat, long, res)
                 actual_cell = result[2 + res]
                 self.assertEqual(actual_cell, expected_cell)
 
